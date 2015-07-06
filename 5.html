@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Updating The Value Of JSON Array</title>
+	</head>
+	
+	<body>
+		<span id="v1"></span>
+
+		<script>
+			
+			//Creating an array
+			var text = '{"employees":[' +
+											'{"firstName":"John","lastName":"Doe" },' +
+											'{"firstName":"Anna","lastName":"Smith" },' +
+											'{"firstName":"Peter","lastName":"Jones" }]}';
+			//Updating the array
+			//employee[0].name = "Deepak Bawa";
+			
+			//Creating Object
+			var obj = JSON.parse(text);
+			
+			//Set data
+			//obj = JSON.parse(text);
+			document.getElementById("v1").innerHTML =
+			obj.employees[1].firstName + " " + obj.employees[1].lastName;
+			
+							
+		</script>
+	</body>
+</html>
