@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>JSON HTTP Request</title>
+	</head>
+	
+	<body>
+		<span id="v1"></span>
+		
+		<script>
+			
+			//Creating Array
+			var data = 	[
+								{
+									"display":"Go To First Page",
+									"url":"FirstPage.html"
+								},
+								{
+									"display":"Go To Second Page",
+									"url":"SecondPage.html"
+								},
+								{
+									"display":"Go To Third Page",
+									"url":"ThirdPage.html"
+								}
+							];
+			
+			//Calling Function
+			ShowPage(data);
+			
+			//Called Function
+			function ShowPage(data)
+			{
+				var str ="";
+				var i;
+				
+				for(i=0; i<data.length; i++)
+				{
+					str = str + '<a href="' + data[i].url + '"> '+ data[i].display +' </a><br>';
+				}
+				
+				document.getElementById("v1").innerHTML = str;
+			}
+		</script>
+	</body>
+</html>
