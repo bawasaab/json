@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title></title>
+	</head>
+	
+	<body>
+		<span id="v1"></span>
+		
+		<script>
+			var text = '{"fruit":['+
+									'{"name":"Apple", "color":"Red"},'+
+									'{"name":"Banana", "color":"Yellow"}]}';
+			//Creating Object
+			var obj = JSON.parse(text);
+			
+			document.getElementById("v1").innerHTML = "Fruit is" + obj.fruit[0].name + " And Color is " + obj.fruit[0].color + "<br>" 
+			+ "Fruit is " + obj.fruit[1].name + " And Color is" + obj.fruit[1].color + "<br>";
+		</script>
+		
+	</body>
+</html>
