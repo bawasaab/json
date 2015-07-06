@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>Simple Example Of Jason</title>
+	</head>
+	
+	<body>
+		<p id="v1"></p>
+		
+		<script>
+		
+			//JSON Code should be put into <script> tag under <body> tag
+			
+			var data = '{"name" : "Deepak Bawa", "addr" : "GNDU"}';
+			
+			//creating object
+			var obj = JSON.parse(data);
+			
+			//set data
+			document.getElementById("v1").innerHTML = obj.name + "<br>" + obj.addr;
+		</script>
+		
+	</body>
+</html>
