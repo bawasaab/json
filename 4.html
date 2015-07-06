@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Updating The Value Of JSON Array</title>
+	</head>
+	
+	<body>
+		<p id="v1"></p>
+
+		<script>
+			
+			//Creating an array
+			var employee =	[
+								{
+									"name":"Deepak", "trade":"IT"
+								},
+								{
+									"name":"Lovepreet", "trade":"IT"
+								},
+								{
+									"name":"MoneyDeep", "trade":"CSE"
+								},
+							];
+			
+			//Updating the array
+			employee[0].name = "Deepak Bawa";
+			
+			//Set data
+			document.getElementById("v1").innerHTML = employee[0].name +" "+ employee[0].trade;
+			
+							
+		</script>
+	</body>
+</html>
