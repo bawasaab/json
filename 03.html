@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Create a JavaScript Object</h2>
+
+<p id="demo"></p>
+
+<script>
+var employees = [
+    {
+    "firstName":"John",
+    "lastName":"Doe"
+    }, 
+    {
+    "firstName":"Anna",
+    "lastName":"Smith"
+    },
+    {
+    "firstName":"Peter",
+    "lastName":"Jones"
+    },
+];
+
+employees[0].firstName="Gilbert";
+document.getElementById("demo").innerHTML =
+employees[0].firstName + " " + employees[0].lastName;
+</script>
+
+</body>
+</html>
