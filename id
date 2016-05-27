@@ -1,0 +1,17 @@
+if(mysql_num_rows($exe) > 0)
+			{
+				
+				$row = mysql_fetch_array($exe);
+				$str = substr($row['OutletId'], 1);
+				$OutletId = intval($str) + 1;
+				$zero = str_pad($OutletId, 5, '0', STR_PAD_LEFT);
+				$final = $Letter.$zero;
+				return $final;
+			}
+			else 
+			{
+				$OutletId = 1;
+				$zero = str_pad($OutletId, 5, '0', STR_PAD_LEFT);
+				$final = $Letter.$zero;
+				return $final;
+			}
