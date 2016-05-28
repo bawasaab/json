@@ -1,17 +1,23 @@
-if(mysql_num_rows($exe) > 0)
-			{
-				
-				$row = mysql_fetch_array($exe);
-				$str = substr($row['OutletId'], 1);
-				$OutletId = intval($str) + 1;
-				$zero = str_pad($OutletId, 5, '0', STR_PAD_LEFT);
-				$final = $Letter.$zero;
-				return $final;
-			}
-			else 
-			{
-				$OutletId = 1;
-				$zero = str_pad($OutletId, 5, '0', STR_PAD_LEFT);
-				$final = $Letter.$zero;
-				return $final;
-			}
+
+			public function createId($letter, $idColoum, $tableName)
+    {
+        $qry = "SELECT ". $idColoum ." as id FROM ". $tableName ." ORDER BY ". $idColoum ." DESC";
+        $result = $this->db->query($qry) or die($this->db->error);
+        
+        if($result->num_rows)
+        {
+            $row = $result->fetch_assoc();
+            $str = substr($row['id'], 2);
+            $prodStageId = intval($str) + 1;
+            $zero = str_pad($prodStageId, 3, '0', STR_PAD_LEFT);
+            $final = $letter.$zero;
+            return $final;
+        }
+        else 
+        {
+            $prodStageId = 1;
+            $zero = str_pad($prodStageId, 3, '0', STR_PAD_LEFT);
+            $final = $letter.$zero;
+            return $final;
+        }
+    }
