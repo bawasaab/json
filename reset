@@ -1,0 +1,57 @@
+public function resetMenuPositions($id,$position)
+    {
+        $exp_id = intval($id);
+        $exp_position = intval($position);
+        $final_array = $arr_records = array();
+        
+        $qry = "SELECT id FROM menu WHERE status != 'DELETED' ORDER BY position ASC";
+        $this->triggerQery($qry);
+        if($row = $this->getAssocRows())
+        {
+        	for ($i=0; $i < sizeof($row); $i++)
+        	{
+            	$arr_records[] = $row[$i]['id'];
+        	}
+        }
+        $new_array = array($exp_id);
+         
+        if($exp_position == 1)
+        {
+            if (($key = array_search($exp_id, $arr_records)) !== false) 
+            {
+                unset($arr_records[$key]);
+            }           
+            
+            $final_array = array_merge($new_array,$arr_records);
+            
+        }   /* if it is the last element */
+        elseif($exp_position == count($arr_records))
+        {
+            if (($key = array_search($exp_id, $arr_records)) !== false) 
+            {
+                unset($arr_records[$key]);
+            }           
+                
+            $final_array = array_merge($arr_records,$new_array);          
+        }
+        else
+        {
+        	if (($key = array_search($exp_id, $arr_records)) !== false) 
+            {
+                unset($arr_records[$key]);
+            }
+            
+            $final_array = array_merge(array_slice($arr_records,0,$exp_position-1),$new_array,array_slice($arr_records,$exp_position-1));
+                        
+        }
+
+        $set_ordr = 1;
+        foreach($final_array AS $id)
+        {
+        	$condition = "status != 'DELETED' AND id =". $id;
+        	$data['position'] = $set_ordr;
+			$this->update($data, 'menu', $condition);
+			$set_ordr += 1;
+        }
+        return true;
+    }
