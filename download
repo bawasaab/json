@@ -1,0 +1,32 @@
+if( isset( $_GET['export'] ) )
+	{
+		$data = $db->main_employee_master( 1000000000, "ASC" );
+		header('Content-Type: application/excel');
+		header('Content-Disposition: attachment; filename="employeedata.csv"');
+		$row = '';
+		$headings = array('EMPLOYEE_CODE','EMPLOYEE_NAME','TRADE');
+
+		foreach($headings as $head)
+		{
+			$row .= $head.',';
+		}
+
+		$row = trim($row, ",");
+
+		$row = strtoupper($row)."\n";
+		$counter = 1;
+		$str_replace = array("\n", "\r", "\r\n", "\n\r",",",'"',"'");
+		foreach( $data['data'] AS $k1 => $v1 )
+		{
+			if(is_array($v1))
+			{
+				$row .= (
+					str_replace( $str_replace, '', $v1['emp_id'] ).','.
+					str_replace( $str_replace, '', $v1['emp_name'] ).','.
+					str_replace( $str_replace, '', $v1['trade'] )
+				)."\n";               
+			}
+		}
+		echo $row;
+		exit();
+	}
