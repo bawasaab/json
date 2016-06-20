@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+    DocumentRoot "D:/php"
+    ServerName php.local
+    ServerAlias php.local
+    <Directory "D:/php">
+        AllowOverride All
+        Require all granted
+        Options Indexes FollowSymLinks
+    </Directory>
+</VirtualHost>
